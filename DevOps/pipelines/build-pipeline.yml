@@ -47,11 +47,12 @@ stages:
         zipAfterPublish: True
     # Publish artifact    
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish artifact'
+      displayName: 'Publish zip artifact'
       inputs:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'functionapp'
     - task: AzureFunctionApp@1
+      displayName: 'Deploy - AzureFunctionApp'
       inputs:
         azureSubscription: '$(azure_service_connection_name)'
         appType: 'functionApp'
