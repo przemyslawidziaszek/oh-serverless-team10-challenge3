@@ -1,0 +1,26 @@
+trigger: none
+pr: none
+
+variables:
+- name: branchName 
+  value:  $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
+- template: /DevOps/variables/build-variables.yml
+
+stages:
+
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Build_job
+    displayName: Build
+    pool:
+      vmImage: $(agents_pool_name)
+    steps:
+    # Checkout repo, we need access git credentials for tagging
+    - checkout: self
+      clean: true
+    # Load KV
+    - template: /DevOps/steps/load-kv-secrets.yml
+      parameters:
+        kvRgSerCon: '$(azure_service_connection_name)'
+        kvName: '$(kv_name)'
