@@ -1,4 +1,4 @@
 variables:
-  agents_pool_name: 'windows-latest'
+  agents_pool_name: 'challenge3-agent-pool' #'windows-latest'
   azure_service_connection_name: 'azure_service_connection'
   kv_name: 'github_service_connection'

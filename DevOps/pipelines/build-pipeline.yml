@@ -13,8 +13,7 @@ stages:
   jobs:
   - job: Build_job
     displayName: Build
-    pool:
-      vmImage: $(agents_pool_name)
+    pool: $(agents_pool_name)
     steps:
     # Checkout repo
     - checkout: self
