@@ -51,6 +51,7 @@ stages:
       inputs:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
         artifactName: 'functionapp'
+    # Deploy artifact
     - task: AzureFunctionApp@1
       displayName: 'Deploy - AzureFunctionApp'
       inputs:
