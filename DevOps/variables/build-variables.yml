@@ -1,4 +1,4 @@
 variables:
   agents_pool_name: 'windows-latest'
-  azure_service_connection_name: 'github_service_connection'
+  azure_service_connection_name: 'azure_service_connection'
   kv_name: 'github_service_connection'

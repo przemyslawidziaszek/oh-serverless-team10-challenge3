@@ -16,7 +16,7 @@ stages:
     pool:
       vmImage: $(agents_pool_name)
     steps:
-    # Checkout repo, we need access git credentials for tagging
+    # Checkout repo
     - checkout: self
       clean: true
     # Load KV
