@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IceCreamRatingsApiProject", "IceCreamRatingsApiProject.csproj", "{CC48E59C-32AC-4A79-8027-2313B1296A73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IceCreamRatingsApiProject", "IceCreamRatingsApiProject.csproj", "{E66E60FC-8EEE-464A-8B7B-7D39C5BEB508}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CC48E59C-32AC-4A79-8027-2313B1296A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC48E59C-32AC-4A79-8027-2313B1296A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC48E59C-32AC-4A79-8027-2313B1296A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC48E59C-32AC-4A79-8027-2313B1296A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E66E60FC-8EEE-464A-8B7B-7D39C5BEB508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E66E60FC-8EEE-464A-8B7B-7D39C5BEB508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E66E60FC-8EEE-464A-8B7B-7D39C5BEB508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E66E60FC-8EEE-464A-8B7B-7D39C5BEB508}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C768FE7F-82F4-4074-A297-2DC863D75148}
+		SolutionGuid = {FE7B71CC-06BD-460A-993B-C746C61A5812}
 	EndGlobalSection
 EndGlobal

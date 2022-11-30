@@ -16,7 +16,7 @@ namespace IceCreamRatingsApiProject
         [FunctionName("CreateRating")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
-            [Sql("dbo.Ratings", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<Rating> ratingItems,
+            [Sql("ICECREAM.ratings", ConnectionStringSetting = "MSSQL_CONSTR")] IAsyncCollector<Rating> ratingItems,
             ILogger log)
         {
             log.LogInformation("C# HTTP CreateRating function processed a request.");
@@ -27,7 +27,16 @@ namespace IceCreamRatingsApiProject
 
                 var data = JsonConvert.DeserializeObject<RatingModel>(requestBody);
 
-                var rating = new Rating(data);
+                var rating = new Rating()
+                {
+
+                    locationName = data.locationName,
+                    userId = data.userId,
+                    userNotes = data.userNotes,
+                    productId = data.productId,
+                    rating = data.rating,
+
+                };
 
                 await ratingItems.AddAsync(rating);
 
