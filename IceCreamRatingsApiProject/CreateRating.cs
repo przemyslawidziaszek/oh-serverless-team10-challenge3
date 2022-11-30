@@ -7,29 +7,39 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace IceCreamRatingsApiProject
 {
     public static class CreateRating
     {
+        static List<Rating> ratings= new List<Rating>();
+
         [FunctionName("CreateRating")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("C# HTTP CreateRating function processed a request.");
 
-            string name = req.Query["name"];
+            try
+            {
+                string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+                var data = JsonConvert.DeserializeObject<RatingModel>(requestBody);
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+                var rating = new Rating(data);
 
-            return new OkObjectResult(responseMessage);
+                ratings.Add(rating);
+
+                return new OkObjectResult(rating);
+
+            }
+            catch (Exception exc)
+            {
+                log.LogError(exc.Message);
+                return new BadRequestObjectResult(exc.Message);
+            }                        
         }
     }
 }
