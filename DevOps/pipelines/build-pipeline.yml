@@ -61,3 +61,4 @@ stages:
         package: '$(Build.ArtifactStagingDirectory)/**/*.zip' # string. Required. Package or folder. Default: $(System.DefaultWorkingDirectory)/**/*.zip.
         #runtimeStack: # 'DOTNET|2.2' | 'DOTNET|3.1' | 'DOTNET|6.0' | 'JAVA|8' | 'JAVA|11' | 'NODE|8' | 'NODE|10' | 'NODE|12' | 'NODE|14' | 'NODE|16' | 'PYTHON|3.6' | 'PYTHON|3.7' | 'PYTHON|3.8' | 'PYTHON|3.9'. Optional. Use when appType = functionAppLinux. Runtime stack. 
         deploymentMethod: 'auto' # 'auto' | 'zipDeploy' | 'runFromPackage'. Required.
+        appSettings: '-MSSQL_CONSTR $(mssql-constr)'
