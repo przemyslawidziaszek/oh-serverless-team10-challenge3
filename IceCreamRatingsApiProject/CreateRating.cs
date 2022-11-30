@@ -7,17 +7,16 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace IceCreamRatingsApiProject
 {
     public static class CreateRating
     {
-        static List<Rating> ratings= new List<Rating>();
-
+        
         [FunctionName("CreateRating")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+            [Sql("dbo.Ratings", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<Rating> ratingItems,
             ILogger log)
         {
             log.LogInformation("C# HTTP CreateRating function processed a request.");
@@ -30,7 +29,7 @@ namespace IceCreamRatingsApiProject
 
                 var rating = new Rating(data);
 
-                ratings.Add(rating);
+                await ratingItems.AddAsync(rating);
 
                 return new OkObjectResult(rating);
 
