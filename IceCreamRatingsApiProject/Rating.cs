@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IceCreamRatingsApiProject
 {
@@ -13,7 +11,8 @@ namespace IceCreamRatingsApiProject
         public string userNotes { get; set; }
     }
 
-    public class Rating
+
+    public class Rating 
     {
         public Rating(RatingModel obj)
         { 
