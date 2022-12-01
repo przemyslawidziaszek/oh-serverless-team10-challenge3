@@ -43,10 +43,10 @@ namespace IceCreamRatingsApiProject
                 return new OkObjectResult(rating);
 
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                log.LogError(exc.Message);
-                return new BadRequestObjectResult(exc.Message);
+                log.LogError(ex.Message);
+                return new BadRequestObjectResult(ex.Message);
             }                        
         }
     }
