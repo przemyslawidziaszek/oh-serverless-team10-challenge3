@@ -4,6 +4,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace IceCreamRatingsApiProject
 {
@@ -19,7 +20,14 @@ namespace IceCreamRatingsApiProject
                 ConnectionStringSetting = "MSSQL_CONSTR")]
             IEnumerable<Rating> ratingItem)
         {
-            return new OkObjectResult(ratingItem.FirstOrDefault());
+            try
+            {
+                return new OkObjectResult(ratingItem.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex.Message);
+            }
         }
     }
 }
